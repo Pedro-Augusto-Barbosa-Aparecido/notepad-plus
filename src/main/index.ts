@@ -2,6 +2,8 @@ import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 
+import { createFileRoute, createURLRoute } from 'electron-router-dom'
+
 // @ts-ignore
 import icon from '../../resources/icon.png?asset' // not remove ?asset
 
@@ -10,9 +12,10 @@ import './ipc/frame'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
-    minWidth: 300,
+    width: 1120,
+    height: 700,
+    minWidth: 400,
+    minHeight: 450,
     show: false,
     title: 'Note Pad',
     autoHideMenuBar: true,
@@ -34,12 +37,15 @@ function createWindow(): void {
     return { action: 'deny' }
   })
 
+  const devUrlServer = createURLRoute(process.env.ELECTRON_RENDERER_URL!, 'main')
+  const fileRoute = createFileRoute(join(__dirname, '../renderer/index.html'), 'main')
+
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
   if (is.dev && process.env.ELECTRON_RENDERER_URL) {
-    mainWindow.loadURL(process.env.ELECTRON_RENDERER_URL)
+    mainWindow.loadURL(devUrlServer)
   } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
+    mainWindow.loadFile(...fileRoute)
   }
 }
 

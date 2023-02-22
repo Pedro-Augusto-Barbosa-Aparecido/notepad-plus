@@ -68,6 +68,22 @@ export function Toolbar() {
           </MenuContent>
         </MenuPortal>
       </Menu>
+      <Menu>
+        <MenuTrigger>Tools</MenuTrigger>
+        <MenuPortal>
+          <MenuContent>
+            <MenuItem>
+              <Label>Close all documents</Label>
+            </MenuItem>
+            <MenuItem>
+              <Label>Close all saved</Label>
+            </MenuItem>
+            <MenuItem>
+              <Label>Close current document</Label>
+            </MenuItem>
+          </MenuContent>
+        </MenuPortal>
+      </Menu>
     </Container>
   )
 }

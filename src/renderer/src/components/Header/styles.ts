@@ -58,10 +58,12 @@ export const FrameButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
+  cursor: default;
 
   &.no-hover {
     width: 40px;
+
+    cursor: pointer;
   }
 
   &:hover {
