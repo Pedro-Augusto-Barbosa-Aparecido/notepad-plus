@@ -1,6 +1,7 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { contextBridge } from 'electron'
 import { ElectronAPI, electronAPI } from '@electron-toolkit/preload'
-import { IPC } from '../shared/constants/ipc'
+import { FRAME_EVENTS } from './frame'
+import { FILE_EVENTS } from './file'
 
 declare global {
   export interface Window {
@@ -11,17 +12,8 @@ declare global {
 
 // Custom APIs for renderer
 const api = {
-  maximize() {
-    ipcRenderer.send(IPC.FRAME_EVENTS.MAXIMIZE, {})
-  },
-
-  minimize() {
-    ipcRenderer.send(IPC.FRAME_EVENTS.MINIMIZE, {})
-  },
-
-  close() {
-    ipcRenderer.send(IPC.FRAME_EVENTS.CLOSE, {})
-  }
+  frame: FRAME_EVENTS,
+  file: FILE_EVENTS
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

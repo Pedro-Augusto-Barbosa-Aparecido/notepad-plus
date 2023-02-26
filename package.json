@@ -23,11 +23,14 @@
   "dependencies": {
     "@electron-toolkit/preload": "^1.0.3",
     "@electron-toolkit/utils": "^1.0.2",
+    "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-menubar": "^1.0.0",
     "electron-router-dom": "^1.0.5",
     "phosphor-react": "^1.4.1",
     "react-router-dom": "^6.8.1",
-    "styled-components": "^5.3.6"
+    "scheduler": "^0.23.0",
+    "styled-components": "^5.3.6",
+    "use-context-selector": "^1.4.1"
   },
   "devDependencies": {
     "@electron-toolkit/tsconfig": "^1.0.1",

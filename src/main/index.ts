@@ -8,6 +8,7 @@ import { createFileRoute, createURLRoute } from 'electron-router-dom'
 import icon from '../../resources/icon.png?asset' // not remove ?asset
 
 import './ipc/frame'
+import './ipc/file'
 
 function createWindow(): void {
   // Create the browser window.
@@ -31,6 +32,20 @@ function createWindow(): void {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
+
+  // mainWindow.on('maximize', () => {
+  //   console.log('maximi')
+  //   ipcMain.emit(IPC.FRAME_EVENTS.RESIZE, {
+  //     isMaximized: mainWindow.isMaximized()
+  //   })
+  // })
+
+  // mainWindow.on('move', () => {
+  //   console.log('minimi')
+  //   ipcMain.emit(IPC.FRAME_EVENTS.RESIZE, {
+  //     isMaximized: mainWindow.isMaximized()
+  //   })
+  // })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
